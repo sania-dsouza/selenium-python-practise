@@ -5,6 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import util_methods
 
 SITE_ADDRESS = "http://automationpractice.com/index.php"
 
@@ -16,11 +17,11 @@ class TestHome(unittest.TestCase):
         self.addCleanup(self.browser.quit)  # called even if setUp fails
         self.browser.get(SITE_ADDRESS)
 
-    @unittest.skip("skipping")
+    #@unittest.skip("skipping")
     def test1_launchPageTitle(self):
         self.assertIn('My Store', self.browser.title)
 
-    @unittest.skip("skipping")
+    #@unittest.skip("skipping")
     def test2_emptyCart(self):
         browser = self.browser
         ele = browser.find_element_by_class_name("shopping_cart")
@@ -37,13 +38,19 @@ class TestHome(unittest.TestCase):
         ele = WebDriverWait(browser, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR ,"p#add_to_cart")))
         ele.click()
         sleep(2)
-        browser.save_screenshot("before_cart.png")
+        browser.save_screenshot("screenshots/before_cart.png")
         ele = browser.find_element_by_class_name("cross")
         ele.click()
-        browser.save_screenshot("after_cart.png")
+        browser.save_screenshot("screenshots/after_cart.png")
         ele = browser.find_element_by_class_name("shopping_cart")
         self.assertNotIn("(empty)", ele.text)
         browser.back()
+        browser.save_screenshot("screenshots/browser_back.png")
+        browser.execute_script("window.scrollTo(0, 0)")
+        browser.save_screenshot("screenshots/scroll_up.png")
+        # upon return to the home page , the cart still has the product added and is not empty
+        ele = browser.find_element_by_class_name("shopping_cart")
+        self.assertNotIn("(empty)", ele.text)
 
     def tearDown(self):
         self.browser.quit()
