@@ -37,8 +37,13 @@ class TestHome(unittest.TestCase):
         ele = WebDriverWait(browser, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR ,"p#add_to_cart")))
         ele.click()
         sleep(2)
+        browser.save_screenshot("before_cart.png")
+        ele = browser.find_element_by_class_name("cross")
+        ele.click()
+        browser.save_screenshot("after_cart.png")
         ele = browser.find_element_by_class_name("shopping_cart")
         self.assertNotIn("(empty)", ele.text)
+        browser.back()
 
     def tearDown(self):
         self.browser.quit()
