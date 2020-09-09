@@ -52,6 +52,20 @@ class TestHome(unittest.TestCase):
         ele = browser.find_element_by_class_name("shopping_cart")
         self.assertNotIn("(empty)", ele.text)
 
+    def test4_search(self):
+        browser = self.browser
+        ele = browser.find_element_by_class_name("search_query")
+        ele.click()
+        ele.send_keys("blouse")
+        ele = browser.find_element_by_class_name("button-search")
+        ele.click()
+        sleep(3)
+
+        #assert the count of the search results
+        ele = browser.find_elements_by_class_name("product_img_link")
+        browser.save_screenshot("screenshots/search_results.png")
+        self.assertEqual(len(ele), 1, "There must be only 1 result")
+
     def tearDown(self):
         self.browser.quit()
 
