@@ -243,7 +243,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>test_run.html</h1>
-    <p>Report generated on 21-Sep-2020 at 22:42:29 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.1.1</p>
+    <p>Report generated on 23-Sep-2020 at 00:02:18 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,8 +259,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.7.5</td></tr></table>
     <h2>Summary</h2>
-    <p>4 tests ran in 35.13 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">3 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>4 tests ran in 37.35 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">3 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">1 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -271,20 +271,20 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="failed results-table-row">
+      <tbody class="xfailed results-table-row">
         <tr>
-          <td class="col-result">Failed</td>
+          <td class="col-result">XFailed</td>
           <td class="col-name">test_home_pytest.py::TestHomePage::test3_addToCart</td>
-          <td class="col-duration">14.85</td>
+          <td class="col-duration">15.35</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test_home_pytest.TestHomePage object at 0x10d89ab10&gt;<br/><br/>    def test3_addToCart(self):<br/>        browser = self.driver<br/>        browser.execute_script(&quot;window.scrollTo(0, 800)&quot;)<br/>        time.sleep(5)  # pause for 5 seconds<br/>        # element = browser.find_elements_by_class_name(&quot;product-image-container&quot;)<br/>        element = WebDriverWait(browser, 10).until(<br/>            EC.element_to_be_clickable((By.LINK_TEXT, &quot;Faded Short Sleeve T-shirts&quot;)))<br/>        element.click()<br/>        time.sleep(3)<br/>        ele = WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, &quot;p#add_to_cart&quot;)))<br/>        ele.click()<br/>        time.sleep(2)<br/>        browser.save_screenshot(&quot;screenshots/before_cart.png&quot;)<br/>        ele = browser.find_element_by_class_name(&quot;cross&quot;)<br/>        ele.click()<br/>        browser.save_screenshot(&quot;screenshots/after_cart.png&quot;)<br/>        ele = browser.find_element_by_class_name(&quot;shopping_cart&quot;)<br/>        assert &quot;(empty)&quot; not in ele.text<br/>        browser.back()  # go one page back<br/>        browser.save_screenshot(&quot;screenshots/browser_back.png&quot;)<br/>        browser.execute_script(&quot;window.scrollTo(0, 0)&quot;)  # scroll to the top of the page<br/>        browser.save_screenshot(&quot;screenshots/scroll_up.png&quot;)<br/>        # upon return to the home page , the cart still has the product added and is not empty<br/>        ele = browser.find_element_by_class_name(&quot;shopping_cart&quot;)<br/>&gt;       assert &quot;(empty)&quot; not in ele.text<br/><span class="error">E       AssertionError: assert &#x27;(empty)&#x27; not in &#x27;Cart (empty)&#x27;</span><br/><span class="error">E         &#x27;(empty)&#x27; is contained here:</span><br/><span class="error">E           Cart (empty)</span><br/><br/>test_home_pytest.py:57: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test_home_pytest.TestHomePage object at 0x1078ddb10&gt;<br/><br/>    @pytest.mark.xfail()<br/>    def test3_addToCart(self):<br/>        browser = self.driver<br/>        browser.execute_script(&quot;window.scrollTo(0, 800)&quot;)<br/>        time.sleep(5)  # pause for 5 seconds<br/>        # element = browser.find_elements_by_class_name(&quot;product-image-container&quot;)<br/>        element = WebDriverWait(browser, 10).until(<br/>            EC.element_to_be_clickable((By.LINK_TEXT, &quot;Faded Short Sleeve T-shirts&quot;)))<br/>        element.click()<br/>        time.sleep(3)<br/>        ele = WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, &quot;p#add_to_cart&quot;)))<br/>        ele.click()<br/>        time.sleep(2)<br/>        browser.save_screenshot(&quot;screenshots/before_cart.png&quot;)<br/>        ele = browser.find_element_by_class_name(&quot;cross&quot;)<br/>        ele.click()<br/>        browser.save_screenshot(&quot;screenshots/after_cart.png&quot;)<br/>        ele = browser.find_element_by_class_name(&quot;shopping_cart&quot;)<br/>        assert &quot;(empty)&quot; not in ele.text<br/>        browser.back()  # go one page back<br/>        browser.save_screenshot(&quot;screenshots/browser_back.png&quot;)<br/>        browser.execute_script(&quot;window.scrollTo(0, 0)&quot;)  # scroll to the top of the page<br/>        browser.save_screenshot(&quot;screenshots/scroll_up.png&quot;)<br/>        # upon return to the home page , the cart still has the product added and is not empty<br/>        ele = browser.find_element_by_class_name(&quot;shopping_cart&quot;)<br/>&gt;       assert &quot;(empty)&quot; not in ele.text<br/><span class="error">E       AssertionError: assert &#x27;(empty)&#x27; not in &#x27;Cart (empty)&#x27;</span><br/><span class="error">E         &#x27;(empty)&#x27; is contained here:</span><br/><span class="error">E           Cart (empty)</span><br/><br/>test_home_pytest.py:58: AssertionError<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_home_pytest.py::TestHomePage::test1_launch_page_title</td>
-          <td class="col-duration">2.02</td>
+          <td class="col-duration">2.04</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -293,7 +293,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_home_pytest.py::TestHomePage::test2_emptyCart</td>
-          <td class="col-duration">1.43</td>
+          <td class="col-duration">1.46</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -302,7 +302,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_home_pytest.py::TestHomePage::test4_search</td>
-          <td class="col-duration">4.76</td>
+          <td class="col-duration">7.57</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">

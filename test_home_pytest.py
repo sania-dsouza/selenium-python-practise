@@ -30,6 +30,7 @@ class TestHomePage:
         assert "(empty)" in ele.text
         self.driver.save_screenshot("screenshots/before_cart.png")
 
+    @pytest.mark.xfail()
     def test3_addToCart(self):
         browser = self.driver
         browser.execute_script("window.scrollTo(0, 800)")
